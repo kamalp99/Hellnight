@@ -6,6 +6,7 @@
 #include "BehaviorTree/BTTaskNode.h"
 #include "ChooseNextWaypoint.generated.h"
 
+
 /**
  * 
  */
@@ -17,6 +18,11 @@ class HELLNIGHT_API UChooseNextWaypoint : public UBTTaskNode
 	
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	
-	void GetPatrolPoints();
+protected:
+	UPROPERTY(EditAnyWhere, Category = "Blackboard")
+	struct FBlackboardKeySelector IndexKey;
+
+	UPROPERTY(EditAnyWhere, Category = "Blackboard")
+	struct FBlackboardKeySelector WaypointKey;
 
 };
